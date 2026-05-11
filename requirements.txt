@@ -1,39 +1,4 @@
-import streamlit as st
-import yfinance as yf
-import pandas as pd
-import plotly.graph_objects as go
-
-# إعدادات الصفحة الفخمة
-st.set_page_config(page_title="EISH TASHTI AI", layout="wide")
-
-# التصميم الذهبي (CSS)
-st.markdown("""
-    <style>
-    .main { background-color: #0e1117; color: #ffd700; }
-    .stMetric { background-color: #1c1e26; border: 1px solid #ffd700; padding: 15px; border-radius: 10px; }
-    h1 { color: #ffd700; text-shadow: 2px 2px #000; }
-    </style>
-    """, unsafe_allow_index=True)
-
-st.title("🔱 مركز قيادة إيش تشتي AI - مباشر")
-
-# جلب بيانات حية
-def get_data(ticker):
-    data = yf.download(ticker, period="1d", interval="1m")
-    return data['Close'].iloc[-1], data['Close'].iloc[-1] - data['Close'].iloc[-2]
-
-try:
-    gold_price, gold_diff = get_data("GC=F")
-    btc_price, btc_diff = get_data("BTC-USD")
-    oil_price, oil_diff = get_data("CL=F")
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("الذهب (Gold)", f"${gold_price:,.2f}", f"{gold_diff:+.2f}")
-    col2.metric("بيتكوين (Bitcoin)", f"${btc_price:,.2f}", f"{btc_diff:+.2f}")
-    col3.metric("النفط (Oil)", f"${oil_price:,.2f}", f"{oil_diff:+.2f}")
-
-    st.success("✅ النظام متصل بالأسواق العالمية بنجاح")
-except:
-    st.warning("⚠️ جاري جلب البيانات... تأكد من تحديث الصفحة بعد ثوانٍ")
-
-st.info("الذكاء الاصطناعي يراقب الاتجاهات الآن... وضع التنفيذ: مراقبة")
+streamlit
+pandas
+yfinance
+plotly
